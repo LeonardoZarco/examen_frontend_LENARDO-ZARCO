@@ -30,15 +30,6 @@ namespace AccesoDatos
         public virtual DbSet<DatosUsuario> DatosUsuarios { get; set; }
         public virtual DbSet<Usuario> Usuarios { get; set; }
     
-        public virtual int EliminarUsuario(Nullable<int> iD)
-        {
-            var iDParameter = iD.HasValue ?
-                new ObjectParameter("ID", iD) :
-                new ObjectParameter("ID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("EliminarUsuario", iDParameter);
-        }
-    
         public virtual ObjectResult<GetByUsuarioDatos_Result> GetByUsuarioDatos(Nullable<int> iD)
         {
             var iDParameter = iD.HasValue ?
@@ -51,47 +42,6 @@ namespace AccesoDatos
         public virtual ObjectResult<GetUsuarioDatos_Result> GetUsuarioDatos()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetUsuarioDatos_Result>("GetUsuarioDatos");
-        }
-    
-        public virtual int AgregarUsuario_y_datos(string nombre, string apellidoPaterno, string apellidoMaterno, string direccion, string telefono, string fechaNacimiento, string userName, string email, string password)
-        {
-            var nombreParameter = nombre != null ?
-                new ObjectParameter("Nombre", nombre) :
-                new ObjectParameter("Nombre", typeof(string));
-    
-            var apellidoPaternoParameter = apellidoPaterno != null ?
-                new ObjectParameter("ApellidoPaterno", apellidoPaterno) :
-                new ObjectParameter("ApellidoPaterno", typeof(string));
-    
-            var apellidoMaternoParameter = apellidoMaterno != null ?
-                new ObjectParameter("ApellidoMaterno", apellidoMaterno) :
-                new ObjectParameter("ApellidoMaterno", typeof(string));
-    
-            var direccionParameter = direccion != null ?
-                new ObjectParameter("Direccion", direccion) :
-                new ObjectParameter("Direccion", typeof(string));
-    
-            var telefonoParameter = telefono != null ?
-                new ObjectParameter("Telefono", telefono) :
-                new ObjectParameter("Telefono", typeof(string));
-    
-            var fechaNacimientoParameter = fechaNacimiento != null ?
-                new ObjectParameter("FechaNacimiento", fechaNacimiento) :
-                new ObjectParameter("FechaNacimiento", typeof(string));
-    
-            var userNameParameter = userName != null ?
-                new ObjectParameter("UserName", userName) :
-                new ObjectParameter("UserName", typeof(string));
-    
-            var emailParameter = email != null ?
-                new ObjectParameter("Email", email) :
-                new ObjectParameter("Email", typeof(string));
-    
-            var passwordParameter = password != null ?
-                new ObjectParameter("Password", password) :
-                new ObjectParameter("Password", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AgregarUsuario_y_datos", nombreParameter, apellidoPaternoParameter, apellidoMaternoParameter, direccionParameter, telefonoParameter, fechaNacimientoParameter, userNameParameter, emailParameter, passwordParameter);
         }
     
         public virtual int ModificarUsuarioDatos(Nullable<int> iD, string nombre, string apellidoPaterno, string apellidoMaterno, string direccion, string telefono, string fechaNacimiento, string userName, string email, string password)
@@ -137,6 +87,56 @@ namespace AccesoDatos
                 new ObjectParameter("Password", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ModificarUsuarioDatos", iDParameter, nombreParameter, apellidoPaternoParameter, apellidoMaternoParameter, direccionParameter, telefonoParameter, fechaNacimientoParameter, userNameParameter, emailParameter, passwordParameter);
+        }
+    
+        public virtual int EliminarUsuario(Nullable<int> iD)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("EliminarUsuario", iDParameter);
+        }
+    
+        public virtual int AgregarUsuario_y_datos(string userName, string email, string password, string nombre, string apellidoPaterno, string apellidoMaterno, string direccion, string telefono, string fechaNacimiento)
+        {
+            var userNameParameter = userName != null ?
+                new ObjectParameter("UserName", userName) :
+                new ObjectParameter("UserName", typeof(string));
+    
+            var emailParameter = email != null ?
+                new ObjectParameter("Email", email) :
+                new ObjectParameter("Email", typeof(string));
+    
+            var passwordParameter = password != null ?
+                new ObjectParameter("Password", password) :
+                new ObjectParameter("Password", typeof(string));
+    
+            var nombreParameter = nombre != null ?
+                new ObjectParameter("Nombre", nombre) :
+                new ObjectParameter("Nombre", typeof(string));
+    
+            var apellidoPaternoParameter = apellidoPaterno != null ?
+                new ObjectParameter("ApellidoPaterno", apellidoPaterno) :
+                new ObjectParameter("ApellidoPaterno", typeof(string));
+    
+            var apellidoMaternoParameter = apellidoMaterno != null ?
+                new ObjectParameter("ApellidoMaterno", apellidoMaterno) :
+                new ObjectParameter("ApellidoMaterno", typeof(string));
+    
+            var direccionParameter = direccion != null ?
+                new ObjectParameter("Direccion", direccion) :
+                new ObjectParameter("Direccion", typeof(string));
+    
+            var telefonoParameter = telefono != null ?
+                new ObjectParameter("Telefono", telefono) :
+                new ObjectParameter("Telefono", typeof(string));
+    
+            var fechaNacimientoParameter = fechaNacimiento != null ?
+                new ObjectParameter("FechaNacimiento", fechaNacimiento) :
+                new ObjectParameter("FechaNacimiento", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AgregarUsuario_y_datos", userNameParameter, emailParameter, passwordParameter, nombreParameter, apellidoPaternoParameter, apellidoMaternoParameter, direccionParameter, telefonoParameter, fechaNacimientoParameter);
         }
     }
 }

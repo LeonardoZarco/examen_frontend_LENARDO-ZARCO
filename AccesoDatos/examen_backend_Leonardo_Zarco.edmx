@@ -40,15 +40,15 @@
           </ReferentialConstraint>
         </Association>
         <Function Name="AgregarUsuario_y_datos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="AgregarUsuario y datos">
+          <Parameter Name="UserName" Type="varchar" Mode="In" />
+          <Parameter Name="Email" Type="varchar" Mode="In" />
+          <Parameter Name="Password" Type="varchar" Mode="In" />
           <Parameter Name="Nombre" Type="varchar" Mode="In" />
           <Parameter Name="ApellidoPaterno" Type="varchar" Mode="In" />
           <Parameter Name="ApellidoMaterno" Type="varchar" Mode="In" />
           <Parameter Name="Direccion" Type="varchar" Mode="In" />
           <Parameter Name="Telefono" Type="varchar" Mode="In" />
           <Parameter Name="FechaNacimiento" Type="varchar" Mode="In" />
-          <Parameter Name="UserName" Type="varchar" Mode="In" />
-          <Parameter Name="Email" Type="varchar" Mode="In" />
-          <Parameter Name="Password" Type="varchar" Mode="In" />
         </Function>
         <Function Name="CalcularEdadUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
           <Parameter Name="FechaNacimiento" Type="date" Mode="In" />
@@ -127,24 +127,10 @@
             <End Role="Usuario" EntitySet="Usuarios" />
             <End Role="DatosUsuario" EntitySet="DatosUsuarios" />
           </AssociationSet>
-          <FunctionImport Name="EliminarUsuario">
-          <Parameter Name="ID" Mode="In" Type="Int32" />
-          </FunctionImport>
           <FunctionImport Name="GetByUsuarioDatos" ReturnType="Collection(examen_backend_Leonardo_ZarcoModel.GetByUsuarioDatos_Result)">
           <Parameter Name="ID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GetUsuarioDatos" ReturnType="Collection(examen_backend_Leonardo_ZarcoModel.GetUsuarioDatos_Result)" />
-          <FunctionImport Name="AgregarUsuario_y_datos">
-            <Parameter Name="Nombre" Mode="In" Type="String" />
-            <Parameter Name="ApellidoPaterno" Mode="In" Type="String" />
-            <Parameter Name="ApellidoMaterno" Mode="In" Type="String" />
-            <Parameter Name="Direccion" Mode="In" Type="String" />
-            <Parameter Name="Telefono" Mode="In" Type="String" />
-            <Parameter Name="FechaNacimiento" Mode="In" Type="String" />
-            <Parameter Name="UserName" Mode="In" Type="String" />
-            <Parameter Name="Email" Mode="In" Type="String" />
-            <Parameter Name="Password" Mode="In" Type="String" />
-          </FunctionImport>
           <FunctionImport Name="ModificarUsuarioDatos">
             <Parameter Name="ID" Mode="In" Type="Int32" />
             <Parameter Name="Nombre" Mode="In" Type="String" />
@@ -156,6 +142,20 @@
             <Parameter Name="UserName" Mode="In" Type="String" />
             <Parameter Name="Email" Mode="In" Type="String" />
             <Parameter Name="Password" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="EliminarUsuario">
+          <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="AgregarUsuario_y_datos">
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="ApellidoPaterno" Mode="In" Type="String" />
+            <Parameter Name="ApellidoMaterno" Mode="In" Type="String" />
+            <Parameter Name="Direccion" Mode="In" Type="String" />
+            <Parameter Name="Telefono" Mode="In" Type="String" />
+            <Parameter Name="FechaNacimiento" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="GetByUsuarioDatos_Result">
@@ -214,7 +214,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="EliminarUsuario" FunctionName="examen_backend_Leonardo_ZarcoModel.Store.EliminarUsuario" />
           <FunctionImportMapping FunctionImportName="GetByUsuarioDatos" FunctionName="examen_backend_Leonardo_ZarcoModel.Store.GetByUsuarioDatos">
             <ResultMapping>
               <ComplexTypeMapping TypeName="examen_backend_Leonardo_ZarcoModel.GetByUsuarioDatos_Result">
@@ -249,8 +248,9 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="AgregarUsuario_y_datos" FunctionName="examen_backend_Leonardo_ZarcoModel.Store.AgregarUsuario_y_datos" />
           <FunctionImportMapping FunctionImportName="ModificarUsuarioDatos" FunctionName="examen_backend_Leonardo_ZarcoModel.Store.ModificarUsuarioDatos" />
+          <FunctionImportMapping FunctionImportName="EliminarUsuario" FunctionName="examen_backend_Leonardo_ZarcoModel.Store.EliminarUsuario" />
+          <FunctionImportMapping FunctionImportName="AgregarUsuario_y_datos" FunctionName="examen_backend_Leonardo_ZarcoModel.Store.AgregarUsuario_y_datos" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
