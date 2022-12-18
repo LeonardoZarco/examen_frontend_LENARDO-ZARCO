@@ -10,7 +10,7 @@ namespace Presentacion.Controllers
 {
     public class UsuarioController : Controller
     {
-        [HttpGet]
+   
         public ActionResult GetAll()
         {
             Modelo.Usuario usuario = new Modelo.Usuario();

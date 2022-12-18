@@ -6,8 +6,8 @@ namespace Servicios.Controllers
     public class UsuarioController : ApiController
     {
 
-        [HttpGet]
-        [Route("api/Usuario/GetUsuarios")]
+        
+        [Route("Usuario/GetUsuarioDatos")]
 
         public IHttpActionResult GetAll()
         {
@@ -23,7 +23,7 @@ namespace Servicios.Controllers
             }
         }
         [HttpGet]
-        [Route("api/Usuario/GetByUsuarioDatos/{ID}")]
+        [Route("Usuario/GetByUsuarioDatos/{ID}")]
         public IHttpActionResult GetById(int ID)
         {
             Modelo.Result result = Negocio.Usuario.GetById(ID);
@@ -41,7 +41,7 @@ namespace Servicios.Controllers
         }
 
         [HttpPost]
-        [Route("api/Usuario/AgregarUsuario_y_datos")]
+        [Route("Usuario/AgregarUsuario_y_datos")]
         public IHttpActionResult Add([FromBody] Modelo.Usuario usuario)
         {
             Modelo.Result result = Negocio.Usuario.Add(usuario);
@@ -59,7 +59,7 @@ namespace Servicios.Controllers
         }
 
         [HttpPost]
-        [Route("api/Usuario/ModificarUsuarioDatos/{ID}")]
+        [Route("Usuario/ModificarUsuarioDatos/{ID}")]
         public IHttpActionResult Put(int ID, [FromBody] Modelo.Usuario usuario)
         {
             Modelo.Result result = Negocio.Usuario.Update(usuario);
@@ -75,7 +75,7 @@ namespace Servicios.Controllers
         }
 
         [HttpGet]
-        [Route("api/Usuario/EliminarUsuario/{ID}")]
+        [Route("Usuario/EliminarUsuario/{ID}")]
         public IHttpActionResult Delete(int ID)
         {
 
