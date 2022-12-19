@@ -7,9 +7,7 @@
 <h2>Usuario</h2>
 
 <div class="container">
-    <div class="row">
-        <h2>Usuarios</h2>
-    </div>
+    
 
     <div class="row">
         <div class="col-md-12">
@@ -32,8 +30,8 @@
                 <td>Editar</td>
                 
                 <td>Nombre</td>
-                <td>ApellidoPaterno</td>
-                <td>ApellidoMaterno</td>
+                @*<td>ApellidoPaterno</td>
+                <td>ApellidoMaterno</td>*@
                 <td>Direccion</td>
                 <td>Telefono</td>
                 <td>FechaNacimiento</td>
@@ -51,9 +49,8 @@
                 <tr>
                     <td class="text-center"><a class="btn btn-warning glyphicon glyphicon-edit" href="@Url.Action("Form", "Usuario", new { ID = usuario.ID })"></a></td>
                     <td class="hidden">@usuario.ID</td>
-                    <td>@usuario.Nombre</td>
-                    <td>@usuario.ApellidoPaterno</td>
-                    <td>@usuario.ApellidoMaterno</td>
+                    <td>@usuario.Nombre @usuario.ApellidoPaterno @usuario.ApellidoMaterno</td>
+                    
                     <td>@usuario.Direccion</td>
                     <td>@usuario.Telefono</td>
                     <td>@usuario.FechaNacimiento</td>
