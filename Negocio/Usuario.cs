@@ -27,8 +27,8 @@ namespace Negocio
                         usuario.UserName,
                         usuario.Email,
                         usuario.Password);
-
-
+                    //s
+                    
 
                     if (query > 0) result.Correct = true;
                 }
