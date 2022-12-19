@@ -52,7 +52,7 @@ namespace Presentacion.Controllers
                     {
                         client.BaseAddress = new Uri(ConfigurationManager.AppSettings["WebApi"]);
 
-                        var postTask = client.PostAsJsonAsync<Modelo.Usuario>("Usuario/AgregarUsuario_y_datos", usuario);
+                        var postTask = client.PostAsJsonAsync<Modelo.Usuario>("Usuario/AgregarUsuario_y_datos1", usuario);
                         postTask.Wait();
 
                         var resultProducto = postTask.Result;

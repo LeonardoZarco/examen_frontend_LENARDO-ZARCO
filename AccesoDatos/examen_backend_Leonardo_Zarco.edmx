@@ -39,7 +39,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Function Name="AgregarUsuario_y_datos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="AgregarUsuario y datos">
+        <Function Name="AgregarUsuario_y_datos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="UserName" Type="varchar" Mode="In" />
           <Parameter Name="Email" Type="varchar" Mode="In" />
           <Parameter Name="Password" Type="varchar" Mode="In" />
@@ -131,6 +131,9 @@
           <Parameter Name="ID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GetUsuarioDatos" ReturnType="Collection(examen_backend_Leonardo_ZarcoModel.GetUsuarioDatos_Result)" />
+          <FunctionImport Name="EliminarUsuario">
+          <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
           <FunctionImport Name="ModificarUsuarioDatos">
             <Parameter Name="ID" Mode="In" Type="Int32" />
             <Parameter Name="Nombre" Mode="In" Type="String" />
@@ -142,9 +145,6 @@
             <Parameter Name="UserName" Mode="In" Type="String" />
             <Parameter Name="Email" Mode="In" Type="String" />
             <Parameter Name="Password" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="EliminarUsuario">
-          <Parameter Name="ID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="AgregarUsuario_y_datos">
             <Parameter Name="UserName" Mode="In" Type="String" />
@@ -248,8 +248,8 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="ModificarUsuarioDatos" FunctionName="examen_backend_Leonardo_ZarcoModel.Store.ModificarUsuarioDatos" />
           <FunctionImportMapping FunctionImportName="EliminarUsuario" FunctionName="examen_backend_Leonardo_ZarcoModel.Store.EliminarUsuario" />
+          <FunctionImportMapping FunctionImportName="ModificarUsuarioDatos" FunctionName="examen_backend_Leonardo_ZarcoModel.Store.ModificarUsuarioDatos" />
           <FunctionImportMapping FunctionImportName="AgregarUsuario_y_datos" FunctionName="examen_backend_Leonardo_ZarcoModel.Store.AgregarUsuario_y_datos" />
         </EntityContainerMapping>
       </Mapping>

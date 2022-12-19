@@ -41,7 +41,7 @@ namespace Servicios.Controllers
         }
 
         [HttpPost]
-        [Route("Usuario/AgregarUsuario_y_datos")]
+        [Route("Usuario/AgregarUsuario_y_datos1")]
         public IHttpActionResult Add([FromBody] Modelo.Usuario usuario)
         {
             Modelo.Result result = Negocio.Usuario.Add(usuario);

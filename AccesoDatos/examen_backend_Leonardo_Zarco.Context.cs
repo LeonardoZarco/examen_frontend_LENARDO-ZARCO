@@ -44,6 +44,15 @@ namespace AccesoDatos
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetUsuarioDatos_Result>("GetUsuarioDatos");
         }
     
+        public virtual int EliminarUsuario(Nullable<int> iD)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("EliminarUsuario", iDParameter);
+        }
+    
         public virtual int ModificarUsuarioDatos(Nullable<int> iD, string nombre, string apellidoPaterno, string apellidoMaterno, string direccion, string telefono, string fechaNacimiento, string userName, string email, string password)
         {
             var iDParameter = iD.HasValue ?
@@ -87,15 +96,6 @@ namespace AccesoDatos
                 new ObjectParameter("Password", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ModificarUsuarioDatos", iDParameter, nombreParameter, apellidoPaternoParameter, apellidoMaternoParameter, direccionParameter, telefonoParameter, fechaNacimientoParameter, userNameParameter, emailParameter, passwordParameter);
-        }
-    
-        public virtual int EliminarUsuario(Nullable<int> iD)
-        {
-            var iDParameter = iD.HasValue ?
-                new ObjectParameter("ID", iD) :
-                new ObjectParameter("ID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("EliminarUsuario", iDParameter);
         }
     
         public virtual int AgregarUsuario_y_datos(string userName, string email, string password, string nombre, string apellidoPaterno, string apellidoMaterno, string direccion, string telefono, string fechaNacimiento)

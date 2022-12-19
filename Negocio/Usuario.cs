@@ -18,27 +18,26 @@ namespace Negocio
                 using (AccesoDatos.examen_backend_Leonardo_ZarcoEntities context = new AccesoDatos.examen_backend_Leonardo_ZarcoEntities())
 
                 {
-                    var query = context.AgregarUsuario_y_datos(usuario.Nombre,
+                    var query = context.AgregarUsuario_y_datos1(usuario.UserName,
+                        usuario.Email,
+                        usuario.Password,
+                        usuario.Nombre,
                         usuario.ApellidoPaterno,
                         usuario.ApellidoMaterno,
                         usuario.Direccion,
                         usuario.Telefono,
-                        usuario.FechaNacimiento,
-                        usuario.UserName,
-                        usuario.Email,
-                        usuario.Password);
-                    //s
-                    
+                        usuario.FechaNacimiento);
+                   
 
                     if (query > 0) result.Correct = true;
                 }
             }
-            catch (Exception e)
+             catch (Exception e)
             {
                 result.Correct = false;
                 result.ErrorMessage = e.Message;
                 result.Ex = e;
-                throw;
+              
             }
 
             return result;
@@ -69,7 +68,7 @@ namespace Negocio
                 result.Correct = false;
                 result.Ex = e;
                 result.ErrorMessage = e.Message;
-                throw;
+               
             }
 
             return result;
@@ -140,7 +139,7 @@ namespace Negocio
                 result.Ex = e;
                 result.ErrorMessage = e.Message;
 
-                throw;
+                
             }
             return result;
         }
